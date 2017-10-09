@@ -1,12 +1,10 @@
 var http = require('http');
 
-var server = http.createServer(function(request, response) {
-	response.write('hi');
-	response.end();
-})
+var port = 3333;
 
-server.listen(3333, function() {
-	var host = server.address().address;
-	var port = server.address().port;
-	console.log( 'Example app listening at http://%s', host, port);
-});
+http.createServer(function(req, res) {
+	res.writeHead(200, {'Content-Type': 'text/plain'});
+	res.end('Hello world\n');
+}).listen(port);
+
+console.log('server running @ port', port);
